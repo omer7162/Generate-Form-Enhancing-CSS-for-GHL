@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Form Enhancing CSS for GHL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Add meta viewport for mobile responsiveness -->
+  <style>
+    /* Add CSS for mobile responsiveness */
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column; /* Change layout to a column on smaller screens */
+      }
+      #color-picker-container {
+        width: 100%; /* Make color picker container full width on smaller screens */
+      }
+    }
+
+    body {
+      background: linear-gradient(to bottom, #f0faff, #ffffff);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #188bf6;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    header h1 {
+      display: inline;
+    }
+
+    header img {
+      width: 50px;
+      height: 50px;
+      vertical-align: middle;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    #color-picker-container {
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin-bottom: 5px;
+    }
+
+    input[type="color"] {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      margin-top: 1px;
+    }
+
+    #generate-code-button {
+      display: block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background-color: #188bf6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #generate-code-button:hover {
+      background-color: #105f96;
+    }
+
+    #code-container {
+      flex: 1;
+      position: relative; /* Add position relative to create a positioning context */
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      padding: 10px;
+      font-family: 'Courier New', monospace;
+      position: relative; /* Add position relative to create a positioning context */
+    }
+
+    /* Position the clipboard icon in the top right */
+    #clipboard-icon {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/msgsndr/ZXXVt7ejL0ens9pxo3nE/media/65272069751b96665f75dcdd.png">
+</head>
+<body>
+  <header>
+    <h1>Generate Form Enhancing CSS for GHL</h1>
+  </header>
+  <main>
+    <div id="color-picker-container">
+      <label for="main-color-picker">Main Color:</label>
+      <input type="color" id="main-color-picker" value="#f0faff">
+      <label for="second-color-picker">Second Color:</label>
+      <input type="color" id="second-color-picker" value="#188bf6">
+      <label for="font-family-picker">Font Family:</label>
+      <select id="font-family-picker">
+	  <option value="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif">System Font</option>
+	  <option value="sans-serif">sans-serif</option>
+	  <option value="serif">serif</option>
+	  <option value="monospace">monospace</option>
+	  <option value="cursive">cursive</option>
+	  <option value="fantasy">fantasy</option>
+	</select>
+
+      <button id="generate-code-button">Generate Code</button>
+    </div>
+    <div id="code-container">
+      <textarea id="css-code" style="resize: none;"></textarea>
+      <!-- Clipboard icon using an SVG image -->
+      <img id="clipboard-icon" src="https://svgshare.com/i/yRg.svg" alt="Clipboard Icon">
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const mainColorPicker = document.getElementById('main-color-picker');
+      const secondColorPicker = document.getElementById('second-color-picker');
+      const fontFamilyPicker = document.getElementById('font-family-picker');
+      const generateCodeButton = document.getElementById('generate-code-button');
+      const cssCode = document.getElementById('css-code');
+      const clipboardIcon = document.getElementById('clipboard-icon');
+
+      // Function to copy the CSS code to the clipboard
+      const copyToClipboard = () => {
+        cssCode.select();
+        cssCode.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand('copy');
+        cssCode.setSelectionRange(0, 0); // Clear the selection
+        clipboardIcon.setAttribute('src', 'https://svgshare.com/i/ySZ.svg');
+        setTimeout(() => {
+          clipboardIcon.setAttribute('src', 'https://svgshare.com/i/yRg.svg');
+        }, 1000);
+      };
+
+      // Add a click event listener to the clipboard icon
+      clipboardIcon.addEventListener('click', copyToClipboard);
+
+      // Function to generate and update CSS code
+      const updateCssCode = () => {
+        const mainColor = mainColorPicker.value;
+        const secondColor = secondColorPicker.value;
+        const fontFamily = fontFamilyPicker.value;
+
+        // Generate CSS code
+        const generatedCss = `
+        /* Apply styles to all text boxes and text areas */
+        input[type="email"],
+        input,
+        input[type="tel"],
+        input[type="text"],
+        input[type="text"][class="form-control"],
+        input[type="number"],
+        .form-builder--item input[type="number"],
+        input[type=text][class=form-control],
+        .form-builder--item input[type=text],
+        .form-builder--item input[type=text][class=form-control],
+        textarea {
+          background-color: ${mainColor} !important; /* Light blue fill */
+          border: none !important; /* No borders */
+          border-bottom: 1px solid ${secondColor} !important; /* Thin blue line at the bottom */
+          outline: none !important; /* Remove default focus outline */
+          transition: border-width 0.5s !important; /* Smooth transition for border width */
+          font-size: 14px !important; /* Example font size */
+          padding: 10px !important; /* Example padding */
+          resize: none !important; /* Disable resizing of the text area */
+          box-sizing: border-box !important; /* Ensure padding doesn't affect element size */
+        }
+
+        /* Apply the gradient background to the entire page */
+        body {
+          background: linear-gradient(to bottom, ${mainColor}, #ffffff) !important; /* Gradient background */
+        }
+
+        /* Add a placeholder/hint text */
+        input[type="text"]::placeholder,
+        textarea::placeholder {
+          color: #afafb0 !important; /* Hint text color */
+        }
+
+        /* Increase the border thickness on focus */
+        input[type="email"]:focus,
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="tel"]:focus,
+        input,
+        .form-builder--item input[type=text][class=form-control]:focus,
+        textarea:focus {
+          border-bottom: 3px solid ${secondColor} !important; /* Thicker blue line on focus */
+        }
+
+        .form-builder--item div[name="date_of_birth"] {
+           padding: 0 !important;
+           background-color: transparent !important;
+        }
+
+        .text-element > div, p, label {
+          font-family: ${fontFamily};
+        }
+        `;
+
+        cssCode.value = generatedCss; // Update the CSS code textarea
+      };
+
+      // Add change event listeners to update CSS code immediately
+      mainColorPicker.addEventListener('input', updateCssCode);
+      secondColorPicker.addEventListener('input', updateCssCode);
+      fontFamilyPicker.addEventListener('change', updateCssCode);
+
+      // Initial code generation
+      updateCssCode();
+    });
+  </script>
+</body>
+</html>
