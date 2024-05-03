@@ -181,11 +181,12 @@
           border: none !important; /* No borders */
           border-bottom: 1px solid ${secondColor} !important; /* Thin blue line at the bottom */
           outline: none !important; /* Remove default focus outline */
-          transition: border-width 0.5s !important; /* Smooth transition for border width */
+          transition: border-width 0.5s margin-bottom 0.5s !important; /* Smooth transition for border width */
           font-size: 14px !important; /* Example font size */
           padding: 10px !important; /* Example padding */
           resize: none !important; /* Disable resizing of the text area */
           box-sizing: border-box !important; /* Ensure padding doesn't affect element size */
+		  margin-bottom: 2px !important;
         }
 
         /* Apply the gradient background to the entire page */
@@ -208,6 +209,7 @@
         .form-builder--item input[type=text][class=form-control]:focus,
         textarea:focus {
           border-bottom: 3px solid ${secondColor} !important; /* Thicker blue line on focus */
+		  margin-bottom: 0px !important;
         }
 
         .form-builder--item div[name="date_of_birth"] {
