@@ -123,6 +123,27 @@
 	  <option value="monospace">monospace</option>
 	  <option value="cursive">cursive</option>
 	  <option value="fantasy">fantasy</option>
+	<option value="Arial, Helvetica, sans-serif">Arial</option>
+	<option value="'Arial Black', Gadget, sans-serif">Arial Black</option>
+	<option value="'Comic Sans MS', cursive, sans-serif">Comic Sans MS</option>
+	<option value="Impact, Charcoal, sans-serif">Impact</option>
+	<option value="'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Lucida Sans Unicode</option>
+	<option value="Tahoma, Geneva, sans-serif">Tahoma</option>
+	<option value="'Trebuchet MS', Helvetica, sans-serif">Trebuchet MS</option>
+	<option value="Verdana, Geneva, sans-serif">Verdana</option>
+	<option value="'Courier New', Courier, monospace">Courier New</option>
+	<option value="'Lucida Console', Monaco, monospace">Lucida Console</option>
+	<option value="'Georgia', serif">Georgia</option>
+	<option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">Palatino Linotype</option>
+	<option value="'Times New Roman', Times, serif">Times New Roman</option>
+	<option value="Garamond, serif">Garamond</option>
+	<option value="'MS Sans Serif', Geneva, sans-serif">MS Sans Serif</option>
+	<option value="'MS Serif', 'New York', sans-serif">MS Serif</option>
+	<option value="'Brush Script MT', cursive">Brush Script MT</option>
+	<option value="Calibri, sans-serif">Calibri</option>
+	<option value="'Helvetica', sans-serif">Helvetica</option>
+	<option value="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Gill Sans</option>
+
 	</select>
 
       <button id="generate-code-button">Generate Style</button>
@@ -162,6 +183,7 @@
         const mainColor = mainColorPicker.value;
         const secondColor = secondColorPicker.value;
         const fontFamily = fontFamilyPicker.value;
+
 
         // Generate CSS code
         const generatedCss = `
@@ -205,7 +227,7 @@
         input[type="text"]:focus,
         input[type="number"]:focus,
         input[type="tel"]:focus,
-        input,
+        input:focus,
         .form-builder--item input[type=text][class=form-control]:focus,
         textarea:focus {
           border-bottom: 3px solid ${secondColor} !important; /* Thicker blue line on focus */
@@ -217,9 +239,33 @@
            background-color: transparent !important;
         }
 
-        .text-element > div, p, label {
+        .text-element > div, p, label, span {
           font-family: ${fontFamily};
         }
+				/* Basic styles for the button */
+		button[type="submit"], #submit-button {
+			background-color: ${mainColor} !important;
+			box-shadow: none !important;
+			transition: box-shadow 0.3s ease !important; /* Smooth transition for all changes */
+			color: ${secondColor} !important;
+			border: 2px solid ${secondColor} !important;/* Changes cursor to pointer to indicate it's clickable */
+		}
+		button[type="submit"] div, #submit-button div {
+			color: ${secondColor} !important;
+		}
+
+		button[type="submit"]:hover div, #submit-button:hover div {
+			color: ${mainColor} !important;
+		}
+
+		/* Hover state styles */
+		button[type="submit"]:hover, #submit-button:hover {
+			background-color: ${secondColor} !important; /* Brighter and different shade on hover */
+			color: ${mainColor} !important; /* Change text color to black for contrast */
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
+			font-weight: 600 !important; /* Making text bold */
+		}
+
         `;
 
         cssCode.value = generatedCss; // Update the CSS code textarea
