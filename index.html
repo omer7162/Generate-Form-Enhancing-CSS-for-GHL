@@ -221,6 +221,8 @@ html {
 		</div>
 </div>
   <script>
+
+
     document.addEventListener('DOMContentLoaded', function () {
       const mainColorPicker = document.getElementById('main-color-picker');
       const secondColorPicker = document.getElementById('second-color-picker');
@@ -267,14 +269,13 @@ html {
         textarea {
           background-color: ${mainColor} !important; /* Light blue fill */
           border: none !important; /* No borders */
-          border-bottom: 1px solid ${secondColor} !important; /* Thin blue line at the bottom */
+          border-bottom: 2px solid ${secondColor} !important; /* Thin blue line at the bottom */
           outline: none !important; /* Remove default focus outline */
-          transition: border-width 0.5s margin-bottom 0.5s !important; /* Smooth transition for border width */
+          transition: none !important; /* Smooth transition for border width */
           font-size: 14px !important; /* Example font size */
           padding: 10px !important; /* Example padding */
           resize: none !important; /* Disable resizing of the text area */
-          box-sizing: border-box !important; /* Ensure padding doesn't affect element size */
-		  margin-bottom: 2px !important;
+		  box-sizing: border-box !important;
         }
 
         /* Apply the gradient background to the entire page */
@@ -296,8 +297,7 @@ html {
         input:focus,
         .form-builder--item input[type=text][class=form-control]:focus,
         textarea:focus {
-          border-bottom: 3px solid ${secondColor} !important; /* Thicker blue line on focus */
-		  margin-bottom: 0px !important;
+         
         }
 
         .form-builder--item div[name="date_of_birth"] {
@@ -331,6 +331,29 @@ html {
 			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
 			font-weight: 600 !important; /* Making text bold */
 		}
+				
+				/* Style for custom file upload label */
+		label.custom-file-upload {
+			border: none !important; /* No borders */
+			border-bottom: 2px solid ${mainColor} !important; /* Thin blue line at the bottom */
+			outline: none !important; /* Remove default focus outline */
+			font-size: 14px !important; /* Set font size */
+			padding: 10px !important; /* Set padding */
+			display: block; /* Make label block level */
+			cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+		}
+
+		/* Add a hover effect for the label */
+		label.custom-file-upload {
+			background-color: ${mainColor} !important; /* Change background on hover */
+			color: ${secondColor} !important; /* Change text color to light blue */
+		}
+
+		/* Change SVG color on label hover */
+		label.custom-file-upload svg {
+			fill: ${secondColor} !important; /* Change SVG icon color on hover */
+		}
+
 
         `;
 
@@ -423,6 +446,14 @@ displayThemes(); // Initial call to display themes
 
 
     });
+	
+	var faviconURL = 'https://storage.googleapis.com/msgsndr/ZXXVt7ejL0ens9pxo3nE/media/6633bcefb1687ea4096cfa47.png'
+
+		var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+		link.type = 'image/x-icon';
+		link.rel = 'shortcut icon';
+		link.href = faviconURL
+		document.getElementsByTagName('head')[0].appendChild(link);
   </script>
 </body>
 </html>
