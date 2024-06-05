@@ -316,20 +316,20 @@ html {
 			color: ${secondColor} !important;
 			border: 2px solid ${secondColor} !important;/* Changes cursor to pointer to indicate it's clickable */
 		}
-		button[type="submit"] div, #submit-button div {
-			color: ${secondColor} !important;
-		}
 
-		button[type="submit"]:hover div, #submit-button:hover div {
+		button[type="submit"] div, #submit-button div {
 			color: ${mainColor} !important;
+		}
+		
+		button[type="submit"], #submit-button {
+			background-color: ${secondColor} !important; /* Brighter and different shade on hover */
+			color: ${mainColor} !important; /* Change text color to black for contrast */
+			font-weight: 600 !important; /* Making text bold */
 		}
 
 		/* Hover state styles */
 		button[type="submit"]:hover, #submit-button:hover {
-			background-color: ${secondColor} !important; /* Brighter and different shade on hover */
-			color: ${mainColor} !important; /* Change text color to black for contrast */
 			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
-			font-weight: 600 !important; /* Making text bold */
 		}
 				
 				/* Style for custom file upload label */
