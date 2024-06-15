@@ -256,15 +256,16 @@ html {
         // Generate CSS code
         const generatedCss = `
         /* Apply styles to all text boxes and text areas */
-        input[type="email"],
-        input,
+                input[type="email"],
+        input:not(.multiselect):not(.multiselect__input),
         input[type="tel"],
-        input[type="text"],
+	div.multiselect div.multiselect__tags,
+        input[type="text"]:not(.multiselect):not(.multiselect__input),
         input[type="text"][class="form-control"],
         input[type="number"],
         .form-builder--item input[type="number"],
         input[type=text][class=form-control],
-        .form-builder--item input[type=text],
+        .form-builder--item input[type=text]:not(.multiselect):not(.multiselect__input),
         .form-builder--item input[type=text][class=form-control],
         textarea {
           background-color: ${mainColor} !important; /* Light blue fill */
